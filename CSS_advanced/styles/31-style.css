@@ -684,11 +684,11 @@ ul.row {
 }
 
 .card-testimonial .card-quote::before {
-    content: \201c;
+    content: "\201c";
     position: absolute;
     vertical-align: -4.5rem;
     left: -1rem;
-    color-scheme: #efeded;
+    color: #efeded;
     font-size: 10rem;
     z-index: -1;
 }
