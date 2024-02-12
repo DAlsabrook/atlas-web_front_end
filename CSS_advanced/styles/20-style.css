@@ -467,7 +467,7 @@ a:active {
     clear: both;
 }
 
-.row:after {
+.row::after {
     content: "";
     display: table;
     clear: both;
