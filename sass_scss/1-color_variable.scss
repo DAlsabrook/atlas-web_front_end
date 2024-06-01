@@ -2,7 +2,10 @@
 
 $mycolor: #3D3D3D;
 
-body,
+body {
+    color: $mycolor;
+}
+
 p {
   color: $mycolor;
 }
