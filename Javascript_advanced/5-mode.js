@@ -1,3 +1,5 @@
+// Not sure what tags we are supposed to change so I changed them all :)
+
 function changeMode(size, weight, transform, background, color) {
   return () => {
     const tags = ["p", "a", "h1", "h2", "h3", "li", "span", "input", "div", "body"];
