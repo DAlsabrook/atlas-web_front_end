@@ -17,11 +17,11 @@ function countPrimeNumbers() {
 }
 
 let start = performance.now();
+// Sends all function calls to the queue to be executed when the stack has cleared and main file is done running
 setTimeout(() => {
   for(let i = 0; i < 100; i++) {
     countPrimeNumbers();
   }
   let end = performance.now();
   console.log(`Execution time of calculating prime numbers 100 times was ${end - start} milliseconds.`);
-  console.log(res);
 }, 0);
