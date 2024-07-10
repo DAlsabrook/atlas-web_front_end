@@ -35,7 +35,20 @@
           )
         );
       }
+      function replaceFamilyTree () {
+        $('tbody').html(
+          `<tr>
+            <td style="font-weight: bold;">Firstname</td>
+            <td style="font-weight: bold;">Lastname</td>
+          </tr>
+          <tr>
+            <td>Gerard</td>
+            <td>Bonissa</td>
+          </tr>`
+        );
+      }
       createFamilyTree();
+      replaceFamilyTree();
     });
   </script>
 </body>
