@@ -52,6 +52,7 @@
       // API function
       function queryWikipedia(search, offset = 0) {
         let url = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=" + search + "&sroffset=" + offset;
+        displayLoading(true);
         $.ajax({
           type: "GET",
           url: url,
@@ -64,6 +65,7 @@
               addNewArticle(response.pageid, response.title, response.snippet);
             })
             buildPagination(totalHits, 10, offset);
+            displayLoading(false);
           },
           error: function (errorMessage) {
             console.log(errorMessage)
@@ -71,6 +73,7 @@
         })
       }
 
+      // Pagination function
       function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
         $('#pagination').html('');
         const totalPages = Math.ceil(numberOfItems / itemsPerPage);
@@ -96,6 +99,15 @@
         }
       }
 
+      // Loading function
+      function displayLoading (loading) {
+        const list = $('body').find('ul').first();
+        if (loading) {
+          list.wrap('<div class="loading">');
+        } else if (!loading) {
+          list.unwrap();
+        }
+      }
       // Funciton calls
       createSearchForm();
     });
