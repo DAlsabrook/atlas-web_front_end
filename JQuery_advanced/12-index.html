@@ -22,7 +22,7 @@
         para.append(span);
         $('body').append(para);
 
-        del.click(deletePost(data.id));
+        del.click(() => deletePost(data.id));
       }
 
       function deletePost(id) {
@@ -30,7 +30,8 @@
           url: `http://localhost:3000/posts/${id}`,
           method: 'DELETE',
           success: function () {
-            $(`#row-}`).remove();
+            console.log(id)
+            $(`#row-${id}}`).remove();
           },
           error: function () {
             alert('Post was not deleted');
