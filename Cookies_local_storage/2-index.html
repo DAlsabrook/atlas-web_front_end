@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Login to the website</h1><br>
+  <input type="text" placeholder="Firstname" id="firstname">
+  <input type="text" placeholder="Email" id="email">
+  <input type="button" value="Log me in" id="logIn">
+
+  <h2>Cookies</h2><br>
+  <input type="button" value="Show the cookies" id="showCookies">
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set cookies for login
+      const logInBtn = document.getElementById('logIn');
+      logInBtn.addEventListener('click', () => {
+        setCookies();
+      });
+
+      // Show cookies from browser
+      const showCookiesBtn = document.getElementById('showCookies');
+      showCookiesBtn.addEventListener('click', () => {
+        showCookies();
+      });
+
+    });
+
+    // Function definitions
+    function setCookies() {
+      let firstName = document.getElementById('firstname').value;
+      let email = document.getElementById('email').value;
+
+      document.cookie = `firstname=${firstName}; expires=Tue, 23 Jul 2024 12:00:00 UTC`;
+      document.cookie = `email=${email}; expires=Tue, 23 Jul 2024 12:00:00 UTC`;
+    }
+
+    function getCookie (name) {
+      let cookiesArray = document.cookie.split(';');
+      for(let i in cookiesArray) {
+        if (cookiesArray[i].includes(`${name}`)){
+          let cookieValue = cookiesArray[i].split('=');
+          return cookieValue[1];
+        }
+      }
+      return ""
+    }
+
+    function showCookies() {
+      let cookiesPara = document.createElement('p');
+      let firstName = getCookie('firstname');
+      let email = getCookie('email');
+
+      cookiesPara.innerHTML = `Email: ${email} - Firstname: ${firstName}`;
+      document.body.appendChild(cookiesPara);
+    }
+  </script>
+</body>
+
+</html>
