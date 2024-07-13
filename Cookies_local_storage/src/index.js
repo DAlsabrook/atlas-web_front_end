@@ -25,7 +25,7 @@ function setCookies () {
 function showCookies () {
   let cookiesPara = document.createElement('p');
   let browserCookies = document.cookie;
+
   cookiesPara.innerHTML = browserCookies;
   document.body.appendChild(cookiesPara);
-
 }
