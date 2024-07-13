@@ -1,0 +1,15 @@
+{
+  "name": "cookies",
+  "version": "1.0.0",
+  "description": "Dir for cookie and local storage practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Alsabrook",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
