@@ -17,11 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function setCookies () {
   let firstName = document.getElementById('firstname').value;
   let email = document.getElementById('email').value;
-  
+
   document.cookie = `firstname=${firstName};`;
   document.cookie = `email=${email};`;
-
-  // console.log(firstName, email);
 }
 
 function showCookies () {
