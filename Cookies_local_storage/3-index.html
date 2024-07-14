@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <h2>Login to the website</h2><br>
+    <input type="text" placeholder="Firstname" id="firstname">
+    <input type="text" placeholder="Email" id="email">
+    <input type="button" value="Log me in" id="logIn">
+  </div>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set cookies for login
+      const logInBtn = document.getElementById('logIn');
+      logInBtn.addEventListener('click', () => {
+        setCookies();
+      });
+
+      // Show cookies from browser
+      const showCookiesBtn = document.getElementById('showCookies');
+      showCookiesBtn.addEventListener('click', () => {
+        showCookies();
+      });
+
+    });
+
+    // Function definitions
+    // setCookies() Sets cookies from form fields
+    // getCookies(name) Get cookies with specific name
+    // showCookies() shows cookies for firstname and email in a p tag at bottom of page
+    // showForm() removes welcome message and shows form
+    // hideForm() Removes form
+    // deleteCookiesAndShowForm() calls showForm and removes cookies
+    // showWelcomeMessageOrForm() if user logged in or not show message or form
+
+    function setCookies() {
+      // Sets cookies for firstname and email from form
+      let firstName = document.getElementById('firstname').value;
+      let email = document.getElementById('email').value;
+
+      document.cookie = `firstname=${firstName}; expires=Tue, 23 Jul 2024 12:00:00 UTC`;
+      document.cookie = `email=${email}; expires=Tue, 23 Jul 2024 12:00:00 UTC`;
+    }
+
+    function getCookie(name) {
+      // Gets the cookie of whatever name is passed in
+      let cookiesArray = document.cookie.split(';');
+      for (let i in cookiesArray) {
+        if (cookiesArray[i].includes(`${name}`)) {
+          let cookieValue = cookiesArray[i].split('=');
+          return cookieValue[1];
+        }
+      }
+      return ""
+    }
+
+    function showCookies() {
+      // Show cookies for firstname and last (Displays in a p tag at bottom of page)
+      let cookiesPara = document.createElement('p');
+      let firstName = getCookie('firstname');
+      let email = getCookie('email');
+
+      cookiesPara.innerHTML = `Email: ${email} - Firstname: ${firstName}`;
+      document.body.appendChild(cookiesPara);
+    }
+
+    function showForm () {
+      // Removes welcome message and shows form
+    }
+
+    function hideForm () {
+      // Hides form
+    }
+
+    function deleteCookiesAndShowForm () {
+      // Removes cookies and calls showForm()
+    }
+
+    function showWelcomeMessageOrForm () {
+      // Shows either welcome or form based on if use is logged in or not
+    }
+  </script>
+</body>
+
+</html>
