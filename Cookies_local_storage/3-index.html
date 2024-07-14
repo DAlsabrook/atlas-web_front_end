@@ -8,11 +8,15 @@
 </head>
 
 <body>
-  <div>
+  <div class="formDiv">
     <h2>Login to the website</h2><br>
     <input type="text" placeholder="Firstname" id="firstname">
     <input type="text" placeholder="Email" id="email">
     <input type="button" value="Log me in" id="logIn">
+  </div>
+
+  <div class="welcomeDiv">
+    <h1 class="welcomeMessage"></h1>
   </div>
 
   <script type="text/javascript">
@@ -86,6 +90,7 @@
     function showWelcomeMessageOrForm () {
       // Shows either welcome or form based on if use is logged in or not
     }
+
   </script>
 </body>
 
