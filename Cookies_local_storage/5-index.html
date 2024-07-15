@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping cart</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+    let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+    let test = 'test';
+    try {
+      localStorage.setItem(test, test);
+      localStorage.removeItem(test);
+      test = true;
+    } catch (e) {
+      test = false;
+    }
+
+    if (test) {
+      // available
+      localStorage.setItem('battery', 'false');
+      localStorage.setItem('cheetoes', 'false');
+      localStorage.setItem('lighter', 'false');
+      console.log(localStorage);
+      console.log(localStorage.length);
+
+      createStore();
+      // displayCart();
+    } else {
+      // unavailable
+      alert('Sorry, your browser does not support Web storage. Try again with a better one');
+    }
+
+    function addItemToCart (item) {
+      localStorage.setItem(item, 'true');
+    }
+
+    function  createStore () {
+      let list = document.createElement('ul');
+      document.body.appendChild(list);
+      for (let i = 0; i < localStorage.length; i++) {
+        const li = document.createElement('li');
+        li.textContent = localStorage.key(i);
+        list.append(li);
+      }
+
+      li.on('click', () => {
+        addItemToCart(li.textContent)
+      });
+    }
+    // For devlopment to clear local storage
+    function clearStorage () {
+      for (let i = 0; i < localStorage.length; i++) {
+        localStorage.removeItem(localStorage.key(i));
+      }
+    }
+    clearStorage();
+  </script>
+</body>
+</html>
