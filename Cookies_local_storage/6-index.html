@@ -19,6 +19,8 @@
     } catch (e) {
       test = false;
     }
+    console.log(`sessionStorage on start:`);
+    console.log(sessionStorage)
 
     if (test) {
       // available
@@ -42,21 +44,30 @@
       let list = document.createElement('ul');
       document.body.appendChild(list);
       for (let i = 0; i < sessionStorage.length; i++) {
-        const li = document.createElement('li');
-        li.textContent = sessionStorage.key(i);
-        list.append(li);
-        li.addEventListener('click', () => {
-          addItemToCart(li.textContent);
-        });
+        if (availableItems.includes(sessionStorage.key(i))) {
+          const li = document.createElement('li');
+          li.textContent = sessionStorage.key(i);
+          list.append(li);
+          li.addEventListener('click', () => {
+            addItemToCart(li.textContent);
+          });
+        }
       }
     }
 
     function displayCart() {
-      const prevStorage = sessionStorage;
-
-      if (prevStorage) {
+      let count = 0;
+      if (sessionStorage) {
+        for (let i = 0; i < sessionStorage.length; i++) {
+          const key = sessionStorage.key(i);
+          const value = sessionStorage.getItem(key);
+          if (value === "true" && availableItems.includes(key)) {
+            count++
+          }
+        }
+        console.log(`Items in cart: ${count}`)
         const prevPara = document.createElement('p');
-        prevPara.textContent = `You previously had ${sessionStorage.length} items in your cart`
+        prevPara.textContent = `You previously had ${count} items in your cart`
         document.body.append(prevPara);
       }
     }
