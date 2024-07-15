@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="formDiv">
+    <h2>Login to the website</h2><br>
+    <input type="text" placeholder="Firstname" id="firstname">
+    <input type="text" placeholder="Email" id="email">
+    <input type="button" value="Log me in" id="logIn">
+  </div>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set cookies for login
+      const logInBtn = document.getElementById('logIn');
+      logInBtn.addEventListener('click', () => {
+        setCookies();
+        showWelcomeMessageOrForm();
+      });
+    });
+
+    // Function definitions
+    // setCookies() Sets cookies from form fields
+    // getCookies(name) Get cookies with specific name
+    // showForm() removes welcome message and shows form
+    // hideForm() Removes form
+    // deleteCookiesAndShowForm() calls showForm and removes cookies
+    // showWelcomeMessageOrForm() if user logged in or not show message or form
+
+    function setCookies() {
+      // Sets cookies for firstname and email from form
+      let firstName = document.getElementById('firstname').value;
+      let email = document.getElementById('email').value;
+
+      document.cookie = `firstname=${firstName}; expires=Tue, 23 Jul 2024 12:00:00 UTC`;
+      document.cookie = `email=${email}; expires=Tue, 23 Jul 2024 12:00:00 UTC`;
+    }
+
+    function getCookie(name) {
+      // Gets the cookie of whatever name is passed in
+      let cookiesArray = document.cookie.split(';');
+      for (let i in cookiesArray) {
+        if (cookiesArray[i].includes(`${name}`)) {
+          let cookieValue = cookiesArray[i].split('=');
+          return cookieValue[1];
+        }
+      }
+      return ''
+    }
+
+    function showForm() {
+      // Removes welcome message and shows form
+      document.getElementById('formDiv').style.display = 'block';
+      // const welcome = document.getElementById('welcomeMessage');
+      // if (welcome) {
+      //   welcome.remove();
+      // }
+    }
+
+    function hideForm() {
+      // Hides form
+      document.getElementById('formDiv').style.display = 'none';
+    }
+
+    function deleteCookiesAndShowForm() {
+      // Removes cookies and calls showForm()
+      // https://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript
+      document.cookie.split(';').forEach(cookie => {
+        const eqPos = cookie.indexOf('=');
+        const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+      });
+      showForm();
+    }
+
+    function showWelcomeMessageOrForm() {
+      // Shows either welcome or form based on if user is logged in or not
+      const firstName = getCookie('firstname');
+
+      // User is not logged in
+      if (firstName === '') {
+        showForm();
+        return
+      }
+
+      // User is logged in (creates welcome messenge)
+      hideForm();
+      const welcomeDiv = document.createElement('div');
+      welcomeDiv.id = 'welcomeMessage';
+      welcomeDiv.innerHTML = `Welcome: ${firstName} <a href="#" id="logoutBtn" style="font-weight: normal; font-style: italic; margin-left: 10px;">(logout)</a>`;
+      document.body.insertBefore(welcomeDiv, document.body.firstChild);
+
+      // Logout button logic
+      const logoutBtn = document.getElementById('logoutBtn');
+      logoutBtn.addEventListener('click', () => {
+        welcomeDiv.remove();
+        deleteCookiesAndShowForm();
+      });
+    }
+
+  </script>
+</body>
+
+</html>
