@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping cart</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+    let test = 'test';
+    try {
+      sessionStorage.setItem(test, test);
+      sessionStorage.removeItem(test);
+      test = true;
+    } catch (e) {
+      test = false;
+    }
+
+    if (test) {
+      // available
+      availableItems.forEach(item => {
+        if (!sessionStorage.getItem(item)) {
+          sessionStorage.setItem(item, 'false');
+        }
+      });
+      createStore();
+      displayCart();
+    } else {
+      // unavailable
+      alert('Sorry, your browser does not support Web storage. Try again with a better one');
+    }
+
+    function addItemToCart(item) {
+      sessionStorage.setItem(item, 'true');
+    }
+
+    function createStore() {
+      let list = document.createElement('ul');
+      document.body.appendChild(list);
+      for (let i = 0; i < sessionStorage.length; i++) {
+        const li = document.createElement('li');
+        li.textContent = sessionStorage.key(i);
+        list.append(li);
+        li.addEventListener('click', () => {
+          addItemToCart(li.textContent);
+        });
+      }
+    }
+
+    function displayCart() {
+      const prevStorage = sessionStorage;
+
+      if (prevStorage) {
+        const prevPara = document.createElement('p');
+        prevPara.textContent = `You previously had ${sessionStorage.length} items in your cart`
+        document.body.append(prevPara);
+      }
+    }
+  </script>
+</body>
+
+</html>
