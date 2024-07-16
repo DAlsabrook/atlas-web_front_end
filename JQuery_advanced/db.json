@@ -2,97 +2,115 @@
   "posts": [
     {
       "id": "1",
-      "title": "json-server",
+      "title": "Exploring JSON-Server",
       "author": "typicode"
     },
     {
-      "title": "fd",
-      "author": "fffff",
+      "title": "Introduction to Frontend Development",
+      "author": "Jane Doe",
       "id": "2"
     },
     {
-      "title": "fd",
-      "author": "fffff",
+      "title": "Advanced CSS Techniques",
+      "author": "John Smith",
       "id": "3"
     },
     {
-      "title": "f",
-      "author": "f",
+      "title": "Understanding JavaScript Closures",
+      "author": "Alice Johnson",
       "id": "4"
     },
     {
-      "title": "",
-      "author": "",
+      "title": "Building RESTful APIs with Node.js",
+      "author": "Bob Brown",
       "id": "5"
     },
     {
-      "title": "",
-      "author": "",
+      "title": "React Hooks in Depth",
+      "author": "Carol White",
       "id": "6"
     },
     {
-      "title": "",
-      "author": "",
+      "title": "State Management in Vue.js",
+      "author": "Daniel Green",
       "id": "7"
     },
     {
-      "title": "",
-      "author": "",
+      "title": "Getting Started with TypeScript",
+      "author": "Eva Blue",
       "id": "8"
     },
     {
-      "title": "",
-      "author": "",
+      "title": "GraphQL vs. REST: A Detailed Comparison",
+      "author": "Frank Black",
       "id": "9"
     },
     {
-      "title": "",
-      "author": "",
+      "title": "Web Accessibility Fundamentals",
+      "author": "Grace Red",
       "id": "10"
     },
     {
       "id": "18f6",
-      "title": "yello"
+      "title": "Mobile First Design Philosophy",
+      "author": "Hank Yellow"
     },
     {
       "id": "6777",
-      "title": "tooot\n"
+      "title": "The Future of Web Development",
+      "author": "Ivy Grey"
     },
     {
       "id": "c647",
-      "title": "1234"
+      "title": "Effective Debugging Techniques",
+      "author": "Jack Purple"
     },
     {
       "id": "3370",
-      "title": "s"
+      "title": "Introduction to WebAssembly",
+      "author": "Kathy Orange"
     },
     {
       "id": "856c",
-      "title": "s"
+      "title": "Serverless Architecture Explained",
+      "author": "Liam White"
     },
     {
       "id": "fe87",
-      "title": "asdasdasd"
+      "title": "Microservices vs. Monolithic Architectures",
+      "author": "Mia Pink"
     },
     {
       "id": "17a5",
-      "title": "asdasd",
-      "author": "asd"
+      "title": "The Importance of Code Reviews",
+      "author": "Nolan Brown"
     },
     {
       "id": "f2f1",
-      "title": "title\n",
-      "author": "author"
+      "title": "Continuous Integration and Deployment",
+      "author": "Olivia Black"
     }
   ],
   "comments": [
     {
       "id": "1",
-      "body": "some comment",
-      "postId": 1
+      "body": "This is a very insightful post. Thanks for sharing!",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "body": "Great introduction to the topic, looking forward to more!",
+      "postId": "2"
+    },
+    {
+      "id": "3",
+      "body": "CSS has always been a mystery to me, this helped a lot!",
+      "postId": "3"
     }
   ],
   "profile": {
-    "name": "typicode"
+    "name": "typicode",
+    "bio": "Creator of json-server and many other open-source projects.",
+    "website": "https://github.com/typicode"
   }
 }
