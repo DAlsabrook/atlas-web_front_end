@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping cart</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+    let test = 'test';
+    try {
+      sessionStorage.setItem(test, test);
+      sessionStorage.removeItem(test);
+      test = true;
+    } catch (e) {
+      test = false;
+    }
+
+    if (test) {
+      // available
+      availableItems.forEach(item => {
+        if (!sessionStorage.getItem(item)) {
+          sessionStorage.setItem(item, 'false');
+        }
+      });
+      createStore();
+      displayCart();
+    } else {
+      // unavailable
+      alert('Sorry, your browser does not support Web storage. Try again with a better one');
+    }
+
+    function getCartFromStorage () {
+      console.log('in getCartFromStorage');
+      const cart = JSON.parse(sessionStorage.getItem('cart'));
+      return cart ? cart : {};
+    }
+
+    function addItemToCart(item) {
+      console.log('in addItemToCart');
+      let cart = getCartFromStorage();
+      if (cart[item]) {
+        cart[item].quantity++
+      } else {
+        cart[item] = {inCart: true, quantity: 1};
+      }
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    function removeItemFromCart (item) {
+      console.log('in removeItemFromCart');
+      let cart = getCartFromStorage();
+      delete cart[item];
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    function clearCart () {
+
+    }
+
+    function createStore() {
+
+    }
+
+    function displayCart() {
+
+    }
+
+    function updateCart () {
+
+    }
+  </script>
+</body>
+
+</html>
