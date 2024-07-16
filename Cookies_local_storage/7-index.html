@@ -61,11 +61,22 @@
     }
 
     function clearCart () {
-
+      console.log('in clearCart');
+      sessionStorage.removeItem('cart');
+      displayCart();
     }
 
     function createStore() {
-
+      console.log('in createStore')
+      let availProductsTitle = document.createElement('h2');
+      availProductsTitle.innerText = 'Available products:';
+      let productList = document.createElement('ul');
+      availableItems.forEach((item) => {
+        const listItem = document.createElement('li');
+        listItem.addEventListener('click', () => addItemToCart(item));
+        productList.append(listItem);
+      })
+      document.body.append(availProductsTitle, productList);
     }
 
     function displayCart() {
