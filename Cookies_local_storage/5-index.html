@@ -20,9 +20,10 @@
 
     if (test) {
       // available
-      // clearStorage();
       for(let i in availableItems) {
-        localStorage.setItem(availableItems[i], 'false');
+        if (!localStorage.getItem(availableItems[i])) {
+          localStorage.setItem(availableItems[i], 'false');
+        }
       }
       createStore();
       displayCart();
@@ -49,11 +50,17 @@
     }
 
     function displayCart () {
-      const prevStorage = localStorage;
-
-      if (prevStorage) {
+      let count = 0;
+      if (localStorage.length > 0) {
+        for (let i = 0; i < localStorage.length; i++) {
+          const keyName = localStorage.key(i);
+          const value = localStorage.getItem(keyName);
+          if (value === 'true') {
+            count++;
+          }
+        }
         const prevPara = document.createElement('p');
-        prevPara.textContent = `You previously had ${localStorage.length} items in your cart`
+        prevPara.textContent = `You previously had ${count} items in your cart`
         document.body.append(prevPara);
       }
     }
